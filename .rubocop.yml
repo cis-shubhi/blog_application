@@ -1,0 +1,13 @@
+AllCops:
+  Exclude:
+    - 'config/application.rb'
+    - 'config/environments/production.rb'
+    - 'config/environments/development.rb'
+    - 'config/initializers/backtrace_silencers.rb'
+    - 'config/initializers/session_store.rb'
+    - 'config/initializers/wrap_parameters.rb'
+    - 'config/initializers/assets.rb'
+    - 'config/environments/test.rb'
+    - 'test/test_helper.rb'
+    - 'bin/spring'
+

@@ -5,4 +5,5 @@ Rails.application.routes.draw do
                                           skip: [:omniauth_callbacks]
     end
   end
+  root 'home#index'
 end
