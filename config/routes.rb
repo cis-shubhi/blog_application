@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
-  get 'welcome/Index'
-
-  root to: 'welcome#index'
-  constraints subdomain: 'api' do
-    scope module: 'api' do
-      namespace :v1 do
-        
-      end
+  namespace :api do
+    scope :v1 do
+      mount_devise_token_auth_for 'User', at: 'auth',
+                                          skip: [:omniauth_callbacks]
     end
   end
 end
