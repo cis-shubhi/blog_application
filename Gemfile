@@ -24,7 +24,7 @@ gem 'devise_token_auth'
 gem 'rack-cors'
 
 group :production do
-  #gem 'pg'
+  gem 'pg'
   gem 'rails_12factor'
 end
 
