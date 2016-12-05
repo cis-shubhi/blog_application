@@ -4,7 +4,7 @@ Rails.application.routes.draw do
       mount_devise_token_auth_for 'User', at: 'auth',
       skip: [:omniauth_callbacks]
       resources :users
-      resources :blogs
+      resources :blogs, only: [:index, :create, :update, :destroy]
     end
   end
   root 'home#index'
