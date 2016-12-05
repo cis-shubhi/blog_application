@@ -4,7 +4,7 @@ class Api::V1::BlogsController < ApplicationController
     render json: @blogs
   end
   def create
-    @blog = Blog.new(user_id: session[:user_id], description: params[:description])
+    @blog = Blog.new(user_id: session[:user_id], description: params[:description], title: params[:title])
     if @blog.save
         render json: @blog
     else
@@ -13,7 +13,7 @@ class Api::V1::BlogsController < ApplicationController
   end
   def update
     @blog = Blog.where(id: params[:id], user_id: session[:user_id]).first
-    if @blog.update_attribute(:description, params[:description])
+    if @blog.update_attributes(description: params[:description], title: params[:title])
         render json: @blog
     else
         render json: {error: 'process not completed'}
