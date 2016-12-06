@@ -23,6 +23,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise_token_auth'
 gem 'rack-cors'
 
+#image upload
+gem 'carrierwave'
+gem 'carrierwave-base64'
+
+
 group :production do
   gem 'pg'
   gem 'rails_12factor'

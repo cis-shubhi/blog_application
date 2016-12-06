@@ -32,6 +32,6 @@ class Api::V1::BlogsController < ApplicationController
   private
 
   def blog_params
-    params.require(:blog).permit(:user_id, :description, :title)
+    params.require(:blog).permit(:user_id, :description, :title, :image)
   end
 end
