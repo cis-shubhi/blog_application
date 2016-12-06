@@ -4,7 +4,7 @@ class Api::V1::BlogsController < ApplicationController
     render json: @blogs
   end
   def create
-    @blog = Blog.new(user_id: session[:user_id], description: params[:description], title: params[:title])
+    @blog = Blog.new(user_id: params[:user_id], description: params[:description], title: params[:title])
     if @blog.save
         render json: @blog
     else
