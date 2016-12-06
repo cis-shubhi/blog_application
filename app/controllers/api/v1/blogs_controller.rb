@@ -1,7 +1,5 @@
 class Api::V1::BlogsController < ApplicationController
   
-  before_action :authenticate_api_v1_user!, except: [:index]
-
   def index
     @blogs = Post.all
     render json: @blogs
