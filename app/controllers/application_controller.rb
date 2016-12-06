@@ -3,7 +3,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
   include DeviseTokenAuth::Concerns::SetUserByToken
-  before_filter :add_cors_headers
+  #before_filter :add_cors_headers
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   def add_cors_headers
