@@ -1,10 +1,11 @@
 class Api::V1::BlogsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @blogs = Post.all
     render json: @blogs
   end
   def create
-    @blog = Blog.new(user_id: params[:user_id], description: params[:description], title: params[:title])
+    @blog = Blog.new(blog_params)
     if @blog.save
         render json: @blog
     else
@@ -26,5 +27,11 @@ class Api::V1::BlogsController < ApplicationController
     else
         render json: {error: 'process not completed'}
     end
+  end
+
+  private
+
+  def blog_params
+    params.require(:blog).permit(:user_id, :description, :title)
   end
 end
