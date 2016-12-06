@@ -4,7 +4,7 @@ class Api::V1::BlogsController < ApplicationController
     render json: @blogs
   end
   def create
-    @blog = Blog.new(user_id: session[:user_id], description: params[:description], title: params[:title])
+    @blog = Blog.new(user_id: params[:user_id], description: params[:description], title: params[:title])
     if @blog.save
         render json: @blog
     else
@@ -12,7 +12,7 @@ class Api::V1::BlogsController < ApplicationController
     end
   end
   def update
-    @blog = Blog.where(id: params[:id], user_id: session[:user_id]).first
+    @blog = Blog.where(id: params[:id], user_id: params[:user_id]).first
     if @blog.update_attributes(description: params[:description], title: params[:title])
         render json: @blog
     else
@@ -20,7 +20,7 @@ class Api::V1::BlogsController < ApplicationController
     end
   end
   def destroy
-    @blog = Blog.where(id: params[:id], user_id: session[:user_id]).first
+    @blog = Blog.where(id: params[:id], user_id: params[:user_id]).first
     if @blog.destroy
         render json: {status: 'successful'}
     else
