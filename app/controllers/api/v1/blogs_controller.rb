@@ -1,7 +1,7 @@
 class Api::V1::BlogsController < ApplicationController
   
   def index
-    @blogs = Post.all
+    @blogs = Blog.all
     render json: @blogs
   end
   def create
