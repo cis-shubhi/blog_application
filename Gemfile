@@ -27,6 +27,8 @@ gem 'rack-cors'
 gem 'carrierwave'
 gem 'carrierwave-base64'
 
+gem 'cloudinary'
+
 
 group :production do
   gem 'pg'

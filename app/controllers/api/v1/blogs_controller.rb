@@ -2,7 +2,8 @@ class Api::V1::BlogsController < ApplicationController
   
   def index
     @blogs = Blog.all.map{ |b| { title: b.title, description: b.description, 
-                image: (b.image.present? ? "" : (Base64.encode64(b.image.file.file))), created_at: b.created_at } }
+                image: Base64.encode64(b.image.file.file), created_at: b.created_at } }
+    byebug
     render json: @blogs
   end
   def create

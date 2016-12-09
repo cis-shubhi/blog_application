@@ -1,0 +1,12 @@
+development:
+  cloud_name: dcddpphfo
+  api_key: '128731298697624'
+  api_secret: H9LVqWAYgCSCRuwrcBK4a0vyfKA
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: dcddpphfo
+  api_key: '128731298697624'
+  api_secret: H9LVqWAYgCSCRuwrcBK4a0vyfKA
+  enhance_image_tag: true
+  static_image_support: true
