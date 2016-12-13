@@ -30,10 +30,14 @@ class Api::V1::BlogsController < ApplicationController
   end
   def post_comments
     @blog.comments.where(comment: params[:comment], title: params[:title], user_id: params[:user_id]).first_or_initialize
-    @blog.save
+    if @blog.save
+        render json: {status: 'successful', comment: @blog.comments.last}
+    else
+        render json: {error: 'process not completed'}
+    end
   end
   def get_comments
-    @blog.comments
+    render json: @blog.comments
   end
 
   private
