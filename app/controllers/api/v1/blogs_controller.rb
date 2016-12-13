@@ -28,8 +28,8 @@ class Api::V1::BlogsController < ApplicationController
         render json: {error: 'process not completed'}
     end
   end
-  def create_comment
-    @blog.comments.create(comment: params[:comment], title: params[:title], user_id: params[:user_id])
+  def post_comments
+    @blog.comments.where(comment: params[:comment], title: params[:title], user_id: params[:user_id]).first_or_initialize
     @blog.save
   end
   def get_comments

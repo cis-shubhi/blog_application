@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       resources :users
       resources :blogs, only: [:index, :create, :update, :destroy] do
       	member do
-      		post 'create_comments'
+      		post 'post_comments'
       		get 'get_comments'
       	end
       end
