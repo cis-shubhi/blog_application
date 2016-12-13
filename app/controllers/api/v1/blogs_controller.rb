@@ -3,8 +3,13 @@ class Api::V1::BlogsController < ApplicationController
   before_action :find_blog, except: :index
   
   def index
-    @blogs = Blog.all
-    render json: @blogs
+    data = []
+    Blog.all.map do |blog|
+      data << {title: blog.title, description: blog.description, id: blog.id, created_at: blog.created_at,
+                comments: blog.comments}
+ 
+    end
+    render json: data
   end
   def create
     @blog = Blog.new(blog_params)
