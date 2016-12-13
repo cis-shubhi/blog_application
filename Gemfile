@@ -28,7 +28,7 @@ gem 'carrierwave'
 gem 'carrierwave-base64'
 
 gem 'cloudinary'
-
+gem 'acts_as_commentable'
 
 group :production do
   gem 'pg'
