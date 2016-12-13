@@ -3,7 +3,7 @@ class Api::V1::BlogsController < ApplicationController
   before_action :find_blog, except: :index
   
   def index
-    @blogs = Blog.all.map{ |b| { title: b.title, description: b.description, created_at: b.created_at } }
+    @blogs = Blog.all
     render json: @blogs
   end
   def create
