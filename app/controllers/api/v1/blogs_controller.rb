@@ -6,7 +6,10 @@ class Api::V1::BlogsController < ApplicationController
     data = []
     Blog.all.map do |blog|
       data << {title: blog.title, description: blog.description, id: blog.id, created_at: blog.created_at,
-                comments: blog.comments}
+                like_count: blog.likes.count, comments: blog.comments.map do |comment|
+                  {comment: comment.comment, created_by: comment.user.email, created_at: comment.created_at}
+                end
+              }
  
     end
     render json: data
@@ -44,6 +47,15 @@ class Api::V1::BlogsController < ApplicationController
   def get_comments
     render json: @blog.comments
   end
+  def create_likes
+    @blog.likes.where(status: params[:status], user_id: params[:user_id]).first_or_initialize
+    if @blog.save
+        render json: {status: 'successful', comment: @blog.likes.last}
+    else
+        render json: {error: 'process not completed'}
+    end
+  end
+
 
   private
 

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       	member do
       		post 'post_comments'
       		get 'get_comments'
+          post 'create_likes'
       	end
       end
     end
