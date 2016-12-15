@@ -28,7 +28,7 @@ class Api::V1::BlogsController < ApplicationController
     end
   end
   def get_comments
-    render json: @blog.comments
+    render json: get_blog_comments(@blog)
   end
   def post_comments
     @blog.comments.new(comment: params[:comment], title: params[:title], user_id: params[:user_id])

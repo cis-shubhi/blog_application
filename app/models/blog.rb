@@ -18,4 +18,13 @@ class Blog < ApplicationRecord
  		end
  		return data
   end
+
+
+  def get_blog_comments(blog)
+    data = []
+    blog.comments.map do |comment|
+      data << {comment: comment.comment, created_at: comment.created_at, user: comment.user.email}
+    end
+    return data
+  end
 end
