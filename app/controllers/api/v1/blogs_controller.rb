@@ -1,6 +1,6 @@
 class Api::V1::BlogsController < ApplicationController
 
-  before_action :find_blog, except: [:index, :create,:delete_comment]
+  before_action :find_blog, except: [:index, :create,:delete_comment,:delete_comment]
   
   def index
     data = []
@@ -56,7 +56,7 @@ class Api::V1::BlogsController < ApplicationController
     end
   end
   def delete_comment
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:comment_id])
     @comment.destroy
     render json: {status: 'successful'}
   end
