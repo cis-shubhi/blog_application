@@ -1,6 +1,6 @@
 class Api::V1::BlogsController < ApplicationController
 
-  before_action :find_blog, except: [:index, :create]
+  before_action :find_blog, except: [:index, :create,:delete_comment,:edit_comment]
   
   def index
     data = []
@@ -48,7 +48,7 @@ class Api::V1::BlogsController < ApplicationController
     end
   end
   def edit_comment
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:comment_id])
     if @comment.update_column('comment', params[:comment])
         render json: {status: 'successful', comment: @comment}
     else
@@ -56,7 +56,7 @@ class Api::V1::BlogsController < ApplicationController
     end
   end
   def delete_comment
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:comment_id])
     @comment.destroy
     render json: {status: 'successful'}
   end
