@@ -48,7 +48,7 @@ class Api::V1::BlogsController < ApplicationController
     end
   end
   def edit_comment
-    @comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:comment_id])
     if @comment.update_column('comment', params[:comment])
         render json: {status: 'successful', comment: @comment}
     else
