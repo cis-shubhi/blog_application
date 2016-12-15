@@ -8,11 +8,11 @@ Rails.application.routes.draw do
       	member do
       		post 'post_comments'
       		get 'get_comments'
-          post 'create_likes'
-          post 'edit_comment'
-          delete 'delete_comment'
+          post 'create_likes'          
       	end
       end
+      post 'edit_comment', to: 'blogs#edit_comment'
+      delete 'delete_comment', to: 'blogs#delete_comment'
     end
   end
   root 'home#index'
