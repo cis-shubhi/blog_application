@@ -9,6 +9,8 @@ Rails.application.routes.draw do
       		post 'post_comments'
       		get 'get_comments'
           post 'create_likes'
+          post 'edit_comment'
+          delete 'delete_comment'
       	end
       end
     end
