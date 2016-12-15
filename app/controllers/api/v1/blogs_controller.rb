@@ -1,6 +1,6 @@
 class Api::V1::BlogsController < ApplicationController
 
-  before_action :find_blog, except: [:index, :create]
+  before_action :find_blog, except: [:index, :create,:delete_comment]
   
   def index
     data = []
