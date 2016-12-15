@@ -8,7 +8,7 @@ class Blog < ApplicationRecord
   def self.get_blog_detail
   	data = []
   	Blog.all.map do |blog|
-      data << {title: blog.title, description: blog.description, id: blog.id, image: image, 
+      data << {title: blog.title, description: blog.description, id: blog.id, image: blog.image, 
       					created_at: blog.created_at, like_count: blog.likes.count, 
       					comments: blog.comments.map do |comment|
                 	{id: comment.id, comment: comment.comment, created_by: comment.user.email,
