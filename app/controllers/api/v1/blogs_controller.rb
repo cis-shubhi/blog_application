@@ -3,16 +3,7 @@ class Api::V1::BlogsController < ApplicationController
   before_action :find_blog, except: [:index, :create,:delete_comment,:edit_comment]
   
   def index
-    data = []
-    Blog.all.map do |blog|
-      data << {title: blog.title, description: blog.description, id: blog.id, created_at: blog.created_at,
-                like_count: blog.likes.count, comments: blog.comments.map do |comment|
-                  {id: comment.id, comment: comment.comment, created_by: comment.user.email, created_at: comment.created_at}
-                end
-              }
- 
-    end
-    render json: data
+    render json: Blog.get_blog_detail
   end
   def create
     @blog = Blog.new(blog_params)
